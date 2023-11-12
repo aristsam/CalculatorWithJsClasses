@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <title>Calculator with JSclasses</title>
+</head>
+<style>
+#result{
+    font-size: 50px;
+}
+
+</style>
+<body>
+    <div class="container mt-5 pt-5">
+        <h1 class="text-center">Calculator with JSclasses</h1>
+        
+
+        <form>
+            <div class="form-group">
+              <label for="Number 1">Number 1</label>
+              <input type="number" class="form-control" id="Number 1" placeholder="Number">
+            </div>
+            <hr/>
+
+            <div class="form-group">
+                <label for="Number 2">Number 2</label>
+                <input type="number" class="form-control" id="Number 2" placeholder="Number">
+              </div>
+              <hr/>
+
+              <div class="form-group">
+                <label for="Number 3">Number 3</label>
+                <input type="number" class="form-control" id="Number 3" placeholder="Number">
+              </div>
+              <br/>
+
+              <div class="form-group">
+                <label for="Check Type">Check Type</label>
+                <input type="text" class="form-control" id="Check Type" placeholder="Type yes and check the type of the number">
+              </div>
+              <br/>
+
+            <button type="button" onclick="new Calculator().Sum()" class="btn btn-primary">+</button>
+            <button type="button" onclick="new Calculator().Subtract()" class="btn btn-primary">-</button>
+            <button type="button" onclick="new Calculator().Multiply()" class="btn btn-primary">*</button>
+            <button type="button" onclick="new Calculator().Divide()" class="btn btn-primary">/</button>
+          
+          </form>
+          <p id="result"></p>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+</body>
+
+<script>
+
+    class Calculator {
+         number1   = Number(document.getElementById("Number 1").value);
+         number2   = Number(document.getElementById("Number 2").value);
+         number3   = Number(document.getElementById("Number 3").value);
+         checkType = (document.getElementById("Check Type").value) == 'yes';
+
+        Sum() 
+        {
+            var total = this.number1 + this.number2 + this.number3;
+
+          
+
+            this.printResult(total);
+        }
+
+        Subtract() 
+        {
+            var total = this.number1 - this.number2 - this.number3;
+
+            this.printResult(total);
+        }
+
+        Multiply() 
+        {
+            var total = this.number1 * this.number2 * this.number3;
+
+            this.printResult(total);
+        }
+
+        Divide() 
+        {
+            var total = this.number1 / this.number2 / this.number3;
+            
+            this.printResult(total);
+        }
+
+        getType(total) 
+        {
+            return total == parseInt(total) ? 'Integer' : 'Real'; 
+        }
+
+        printResult(total)
+        {
+            if (this.checkType) {
+                    var type = this.getType(total); 
+
+                    document.getElementById("result").innerHTML = "Type: " + type + ",  Total: " + total;
+            } else {
+                document.getElementById("result").innerHTML = "Total: " + total;
+            }
+        }
+    }    
+</script>
+
+
+
+</html>
